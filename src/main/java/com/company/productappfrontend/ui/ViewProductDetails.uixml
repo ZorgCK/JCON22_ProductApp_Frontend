@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<?xdevuiml version="1.0"?>
+<?template BROWSER_XGA?>
+<?import com.vaadin.flow.component.html.Div?>
+<?import com.vaadin.flow.component.html.Image?>
+<?import com.vaadin.flow.component.orderedlayout.HorizontalLayout?>
+<HorizontalLayout xmlns:x="http://xml.xdev-software.com/xdevuiml" x:name="ViewProductDetails">
+    <x:constraints width="100%" zpos="0" height="100%" />
+    <Div x:name="div">
+        <x:constraints width="-1px" alignment="CENTER" height="-1px" flex-grow="0.0" />
+        <Image x:name="image">
+            <x:constraints width="350px" alignment="AUTO" height="350px" flex-grow="0.0" />
+        </Image>
+    </Div>
+</HorizontalLayout>
