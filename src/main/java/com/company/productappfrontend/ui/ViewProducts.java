@@ -34,14 +34,14 @@ import com.vaadin.flow.router.Route;
 
 
 @Route("")
-public class ViewMain extends VerticalLayout
+public class ViewProducts extends VerticalLayout
 {
 	
 	/**
 	 *
 	 */
 	
-	public ViewMain()
+	public ViewProducts()
 	{
 		super();
 		this.initUI();

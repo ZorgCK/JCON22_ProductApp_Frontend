@@ -25,22 +25,22 @@
         </x:typeArguments>
         <x:bindings>
             <binding field="textFieldName" property="productName" required="true" nullRepresentation="" readOnly="false">
-                <validator errorMessage="Name must containt at least 5 characters" type="StringLength" minLength="5" />
+                <validator minLength="5" errorMessage="Name must containt at least 5 characters" type="StringLength" />
             </binding>
             <binding field="textFieldDesc" property="description" required="true" nullRepresentation="" readOnly="false">
-                <validator errorMessage="Description must containt at least 15 characters" type="StringLength" minLength="15" />
+                <validator minLength="15" errorMessage="Description must containt at least 15 characters" type="StringLength" />
             </binding>
             <binding field="comboBoxCategory" property="category" required="true" readOnly="false">
                 <validator errorMessage="You need to choose a category for the product" type="Bean" />
             </binding>
             <binding field="bigDecimalPrice" property="unitPrice" required="true" readOnly="false">
-                <validator errorMessage="The price cant be lower than 0.01" minValue="0.01" type="Range" />
+                <validator minValue="0.01" errorMessage="The price cant be lower than 0.01" type="Range" />
             </binding>
             <binding field="numberFieldWeight" property="unitWeight" required="true" readOnly="false">
-                <validator errorMessage="The weight of the product cant be lower than 0,001" minValue="0.001" type="Range" />
+                <validator minValue="0.001" errorMessage="The weight of the product cant be lower than 0,001" type="Range" />
             </binding>
             <binding field="integerFieldStock" property="unitsInStock" required="true" readOnly="false">
-                <validator errorMessage="The amount of products in stock cant be lower than 0" minValue="0" type="Range" />
+                <validator minValue="0" errorMessage="The amount of products in stock cant be lower than 0" type="Range" />
             </binding>
         </x:bindings>
     </Binder>
@@ -79,7 +79,7 @@
                     <typeArgument type="Category" />
                 </x:typeArguments>
                 <x:constraints width="100%" height="0px" />
-                <x:itemLabel type="Property" data="name" />
+                <x:itemLabel type="Property" data="categoryName" />
             </ComboBox>
         </FormItem>
         <FormItem x:name="formItem5">
