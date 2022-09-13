@@ -52,7 +52,7 @@ public class GenColProductFunctions extends HorizontalLayout implements Rendered
 		}));
 		
 		dialog.setWidth("50%");
-		dialog.setHeight("27%");
+		dialog.setHeight("70%");
 		dialog.open();
 	}
 	

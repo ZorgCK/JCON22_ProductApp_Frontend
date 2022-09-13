@@ -162,36 +162,37 @@ public class ViewPopupProduct extends VerticalLayout
 	// <generated-code name="initUI">
 	private void initUI()
 	{
-		this.formLayout        = new FormLayout();
-		this.formItem2         = new FormItem();
-		this.labelName         = new Label();
-		this.textFieldName     = new TextField();
-		this.formItem3         = new FormItem();
-		this.labelDesc         = new Label();
-		this.textFieldDesc     = new TextField();
-		this.formItem4         = new FormItem();
-		this.labelCategory     = new Label();
-		this.comboBoxCategory  = new ComboBox<>();
-		this.formItem5         = new FormItem();
-		this.labelPrice        = new Label();
-		this.bigDecimalPrice   = new BigDecimalField();
-		this.formItem6         = new FormItem();
-		this.labelWeight       = new Label();
+		this.formLayout = new FormLayout();
+		this.formItem2 = new FormItem();
+		this.labelName = new Label();
+		this.textFieldName = new TextField();
+		this.formItem3 = new FormItem();
+		this.labelDesc = new Label();
+		this.textFieldDesc = new TextField();
+		this.formItem4 = new FormItem();
+		this.labelCategory = new Label();
+		this.comboBoxCategory = new ComboBox<>();
+		this.formItem5 = new FormItem();
+		this.labelPrice = new Label();
+		this.bigDecimalPrice = new BigDecimalField();
+		this.formItem6 = new FormItem();
+		this.labelWeight = new Label();
 		this.numberFieldWeight = new NumberField();
-		this.formItem7         = new FormItem();
-		this.labelStock        = new Label();
+		this.formItem7 = new FormItem();
+		this.labelStock = new Label();
 		this.integerFieldStock = new IntegerField();
-		this.upload            = new Upload();
-		this.horizontalLayout  = new HorizontalLayout();
-		this.buttonCancel      = new Button();
-		this.buttonSave        = new Button();
-		this.binder            = new Binder<>();
-
+		this.formItem = new FormItem();
+		this.upload = new Upload();
+		this.label = new Label();
+		this.horizontalLayout = new HorizontalLayout();
+		this.buttonCancel = new Button();
+		this.buttonSave = new Button();
+		this.binder = new Binder<>();
+		
 		this.setPadding(false);
 		this.formLayout.setResponsiveSteps(
 			new FormLayout.ResponsiveStep("0px", 1, FormLayout.ResponsiveStep.LabelsPosition.TOP),
-			new FormLayout.ResponsiveStep("500px", 2, FormLayout.ResponsiveStep.LabelsPosition.TOP),
-			new FormLayout.ResponsiveStep("1000px", 3, FormLayout.ResponsiveStep.LabelsPosition.ASIDE));
+			new FormLayout.ResponsiveStep("500px", 2, FormLayout.ResponsiveStep.LabelsPosition.TOP));
 		this.labelName.setText("Name");
 		this.textFieldName.setRequired(true);
 		this.textFieldName.setRequiredIndicatorVisible(true);
@@ -209,31 +210,38 @@ public class ViewPopupProduct extends VerticalLayout
 		this.numberFieldWeight.setRequiredIndicatorVisible(true);
 		this.labelStock.setText("Units in stock");
 		this.integerFieldStock.setRequiredIndicatorVisible(true);
+		this.formItem.getElement().setAttribute("colspan", "2");
 		this.upload.setAutoUpload(true);
 		this.upload.setMaxFiles(1);
 		this.upload.setMaxWidth("");
+		this.label.setText("Image upload");
 		this.horizontalLayout.setPadding(true);
 		this.buttonCancel.setText("Cancel");
 		this.buttonSave.setText("Save");
 		this.buttonSave.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
-
-		this.binder.forField(this.textFieldName).asRequired().withNullRepresentation("")
-			.withValidator(new StringLengthValidator("Name must containt at least 5 characters", 5, null))
-			.bind(Product::getProductName, Product::setProductName);
-		this.binder.forField(this.textFieldDesc).asRequired().withNullRepresentation("")
-			.withValidator(new StringLengthValidator("Description must containt at least 15 characters", 15, null))
-			.bind(Product::getDescription, Product::setDescription);
+		
+		this.binder.forField(this.textFieldName).asRequired().withNullRepresentation("").withValidator(
+			new StringLengthValidator("Name must containt at least 5 characters", 5, null)).bind(
+				Product::getProductName,
+				Product::setProductName);
+		this.binder.forField(this.textFieldDesc).asRequired().withNullRepresentation("").withValidator(
+			new StringLengthValidator("Description must containt at least 15 characters", 15, null)).bind(
+				Product::getDescription,
+				Product::setDescription);
 		this.binder.forField(this.comboBoxCategory).asRequired().bind(Product::getCategory, Product::setCategory);
-		this.binder.forField(this.bigDecimalPrice).asRequired()
-			.withValidator(RangeValidator.of("The price cant be lower than 0.01", new BigDecimal("0.01"), null))
-			.bind(Product::getUnitPrice, Product::setUnitPrice);
-		this.binder.forField(this.numberFieldWeight).asRequired()
-			.withValidator(RangeValidator.of("The weight of the product cant be lower than 0,001", 0.001, null))
-			.bind(Product::getUnitWeight, Product::setUnitWeight);
-		this.binder.forField(this.integerFieldStock).asRequired()
-			.withValidator(RangeValidator.of("The amount of products in stock cant be lower than 0", 0, null))
-			.bind(Product::getUnitsInStock, Product::setUnitsInStock);
-
+		this.binder.forField(this.bigDecimalPrice).asRequired().withValidator(
+			RangeValidator.of("The price cant be lower than 0.01", new BigDecimal("0.01"), null)).bind(
+				Product::getUnitPrice,
+				Product::setUnitPrice);
+		this.binder.forField(this.numberFieldWeight).asRequired().withValidator(
+			RangeValidator.of("The weight of the product cant be lower than 0,001", 0.001, null)).bind(
+				Product::getUnitWeight,
+				Product::setUnitWeight);
+		this.binder.forField(this.integerFieldStock).asRequired().withValidator(
+			RangeValidator.of("The amount of products in stock cant be lower than 0", 0, null)).bind(
+				Product::getUnitsInStock,
+				Product::setUnitsInStock);
+		
 		this.labelName.setSizeUndefined();
 		this.labelName.getElement().setAttribute("slot", "label");
 		this.textFieldName.setWidthFull();
@@ -265,41 +273,49 @@ public class ViewPopupProduct extends VerticalLayout
 		this.integerFieldStock.setHeight(null);
 		this.formItem7.add(this.labelStock, this.integerFieldStock);
 		this.upload.setSizeFull();
-		this.formLayout.add(this.formItem2, this.formItem3, this.formItem4, this.formItem5, this.formItem6,
+		this.label.setSizeUndefined();
+		this.label.getElement().setAttribute("slot", "label");
+		this.formItem.add(this.upload, this.label);
+		this.formLayout.add(
+			this.formItem2,
+			this.formItem3,
+			this.formItem4,
+			this.formItem5,
+			this.formItem6,
 			this.formItem7,
-			this.upload);
+			this.formItem);
 		this.buttonCancel.setWidthFull();
 		this.buttonCancel.setHeight(null);
 		this.buttonSave.setWidthFull();
 		this.buttonSave.setHeight(null);
 		this.horizontalLayout.add(this.buttonCancel, this.buttonSave);
 		this.horizontalLayout.setVerticalComponentAlignment(FlexComponent.Alignment.START, this.buttonSave);
-		this.formLayout.setSizeUndefined();
+		this.formLayout.setSizeFull();
 		this.horizontalLayout.setWidthFull();
 		this.horizontalLayout.setHeight(null);
 		this.add(this.formLayout, this.horizontalLayout);
 		this.setHorizontalComponentAlignment(FlexComponent.Alignment.START, this.horizontalLayout);
 		this.setSizeFull();
-
+		
 		this.upload.addSucceededListener(this::upload_onSucceeded);
 		this.upload.addFileRejectedListener(this::upload_onFileRejected);
 		this.buttonCancel.addClickListener(this::buttonCancel_onClick);
 		this.buttonSave.addClickListener(this::buttonSave_onClick);
 	} // </generated-code>
-	
+
 	// <generated-code name="variables">
-	private FormLayout         formLayout;
-	private Button             buttonCancel, buttonSave;
-	private BigDecimalField    bigDecimalPrice;
-	private Upload             upload;
-	private NumberField        numberFieldWeight;
-	private IntegerField       integerFieldStock;
-	private HorizontalLayout   horizontalLayout;
-	private Label              labelName, labelDesc, labelCategory, labelPrice, labelWeight, labelStock;
-	private ComboBox<Category> comboBoxCategory;
-	private TextField          textFieldName, textFieldDesc;
-	private FormItem           formItem2, formItem3, formItem4, formItem5, formItem6, formItem7;
-	private Binder<Product>    binder;
+	private FormLayout			formLayout;
+	private Button				buttonCancel, buttonSave;
+	private BigDecimalField		bigDecimalPrice;
+	private Upload				upload;
+	private NumberField			numberFieldWeight;
+	private IntegerField		integerFieldStock;
+	private HorizontalLayout	horizontalLayout;
+	private Label				labelName, labelDesc, labelCategory, labelPrice, labelWeight, labelStock, label;
+	private ComboBox<Category>	comboBoxCategory;
+	private TextField			textFieldName, textFieldDesc;
+	private FormItem			formItem2, formItem3, formItem4, formItem5, formItem6, formItem7, formItem;
+	private Binder<Product>		binder;
 	// </generated-code>
 	
 }

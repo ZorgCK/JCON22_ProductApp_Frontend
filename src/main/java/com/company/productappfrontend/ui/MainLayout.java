@@ -21,8 +21,6 @@ public class MainLayout extends AppLayout
 	public MainLayout()
 	{
 		this.addToNavbar(new DrawerToggle(), this.title);
-
-		this.addDrawerEntry(VaadinIcon.HOME, "Home", HomeView.class);
 		this.addDrawerEntry(VaadinIcon.PACKAGE, "Products", ViewProducts.class);
 	}
 

@@ -33,7 +33,7 @@ import com.vaadin.flow.data.renderer.NumberRenderer;
 import com.vaadin.flow.router.Route;
 
 
-@Route("")
+@Route(value = "", layout = MainLayout.class)
 public class ViewProducts extends VerticalLayout
 {
 	
